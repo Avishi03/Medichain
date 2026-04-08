@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #0A0F1E;
+    --surface: #0D1528;
+    --border: #1E2D45;
+    --primary: #00C9A7;
+    --secondary: #3B82F6;
+    --danger: #EF4444;
+    --success: #22C55E;
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  html,
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    background-color: #0A0F1E;
+    color: #F1F5F9;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0D1528;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1E2D45;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00C9A7;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-surface border border-border rounded-card p-6;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .btn-primary {
+    @apply bg-primary text-background font-semibold px-6 py-3 rounded-lg
+           hover:bg-primary-hover transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed
+           active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border border-primary text-primary font-semibold px-6 py-3 rounded-lg
+           hover:bg-primary/10 transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed
+           active:scale-95;
+  }
+
+  .btn-danger {
+    @apply bg-danger text-white font-semibold px-6 py-3 rounded-lg
+           hover:bg-red-600 transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed
+           active:scale-95;
+  }
+
+  .input-field {
+    @apply w-full bg-background border border-border text-text-primary rounded-lg px-4 py-3
+           placeholder:text-muted focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary
+           transition-colors duration-200;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-text-secondary mb-1.5;
+  }
+
+  .badge-success {
+    @apply inline-flex items-center gap-1.5 bg-success/10 text-success
+           text-xs font-semibold px-2.5 py-1 rounded-full border border-success/20;
+  }
+
+  .badge-danger {
+    @apply inline-flex items-center gap-1.5 bg-danger/10 text-danger
+           text-xs font-semibold px-2.5 py-1 rounded-full border border-danger/20;
+  }
+
+  .badge-warning {
+    @apply inline-flex items-center gap-1.5 bg-warning/10 text-warning
+           text-xs font-semibold px-2.5 py-1 rounded-full border border-warning/20;
+  }
+
+  .badge-info {
+    @apply inline-flex items-center gap-1.5 bg-secondary/10 text-secondary
+           text-xs font-semibold px-2.5 py-1 rounded-full border border-secondary/20;
+  }
+
+  /* Status-specific glow borders */
+  .genuine-card {
+    border: 2px solid #22C55E;
+    box-shadow: 0 0 24px rgba(34, 197, 94, 0.2), 0 4px 24px rgba(0,0,0,0.4);
+  }
+
+  .recalled-card {
+    border: 2px solid #EF4444;
+    box-shadow: 0 0 24px rgba(239, 68, 68, 0.2), 0 4px 24px rgba(0,0,0,0.4);
+  }
+
+  .not-found-card {
+    border: 2px solid #F59E0B;
+    box-shadow: 0 0 24px rgba(245, 158, 11, 0.2), 0 4px 24px rgba(0,0,0,0.4);
+  }
+
+  /* Timeline connector line */
+  .timeline-line {
+    @apply absolute left-4 top-8 bottom-0 w-0.5 bg-border;
+  }
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #00C9A7, #3B82F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated gradient border for hero */
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(135deg, #00C9A7, #3B82F6);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(0, 201, 167, 0.3);
+  border-top-color: #00C9A7;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
