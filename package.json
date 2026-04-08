@@ -1,0 +1,23 @@
+{
+  "name": "medichain",
+  "version": "1.0.0",
+  "description": "MediChain — Fake Medicine Detection & Supply Chain Verification using Blockchain",
+  "scripts": {
+    "compile": "npx hardhat compile",
+    "test": "npx hardhat test",
+    "deploy:local": "npx hardhat run scripts/deploy.js --network hardhat",
+    "deploy:sepolia": "npx hardhat run scripts/deploy.js --network sepolia",
+    "verify:sepolia": "npx hardhat run scripts/verify.js --network sepolia",
+    "node": "npx hardhat node",
+    "clean": "npx hardhat clean"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "hardhat": "^2.19.0",
+    "chai": "^4.3.7",
+    "dotenv": "^16.3.1"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.0"
+  }
+}
